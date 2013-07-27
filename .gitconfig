@@ -1,0 +1,20 @@
+[user]
+	name = PéCé
+	email = pc.bertineau@alterphp.com
+[github]
+	user = alterphp
+	token = efc3d4ed347b070d6797301bca872433
+
+[alias]
+  br = branch
+  cm = commit
+  co = checkout
+  d = diff
+  st = status
+  plr = pull --rebase
+
+[push]
+  default = current
+
+[color]
+  ui = true
