@@ -1,9 +1,9 @@
 [user]
-	name = PéCé
-	email = pc.bertineau@alterphp.com
+  name = alterphp
+  email = pc.bertineau@alterphp.com
 [github]
-	user = alterphp
-	token = efc3d4ed347b070d6797301bca872433
+  user = alterphp
+  token = efc3d4ed347b070d6797301bca872433
 
 [alias]
   br = branch
@@ -18,3 +18,5 @@
 
 [color]
   ui = true
+[core]
+  editor = vi
