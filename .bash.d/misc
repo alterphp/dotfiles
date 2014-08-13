@@ -1,0 +1,23 @@
+export SYMFONY_ASSETS_INSTALL="relative"
+
+# Adding rubygems binaries to PATH
+if [ -d ~/.gem/ruby ]; then
+    for dir in ~/.gem/ruby/*/bin; do
+        export PATH="$dir:$PATH";
+    done
+fi
+
+function _update_ps1() {
+  export PS1="$(~/bin/powerline-shell.py $?)"
+}
+
+export PROMPT_COMMAND="_update_ps1; $PROMPT_COMMAND"
+
+# Adding composer binaries to PATH
+if [ -d ~/.composer/vendor/bin/ ]; then
+    export PATH="~/.composer/vendor/bin/:$PATH";
+fi
+
+export EDITOR='/opt/sublime_text/sublime_text'
+
+export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
