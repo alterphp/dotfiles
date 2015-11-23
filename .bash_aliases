@@ -8,6 +8,7 @@ alias l='ls -CF'
 alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
 
 alias sf='app/console'
+alias subl="/opt/sublime_text/sublime_text"
 
 # Alias DOCKER
 alias dc='docker-compose'
@@ -16,9 +17,6 @@ alias dcrun='docker-compose run --rm'
 alias dcsf='docker-compose run --rm php php app/console'
 alias dccap='docker-compose run --rm application bundle exec cap'
 alias dcgulp='docker-compose run --rm application node_modules/.bin/gulp'
-
-# Alias pour capistrano (utilliser la config du projet)
-alias cap='bundle exec cap'
 
 # Re-init BDD avec fixtures
 alias sf_dbreset='sf do:da:dr --force && sf do:da:cr && sf do:sc:cr && sf al:fi:lo -n'

@@ -7,10 +7,12 @@ if [ -d ~/.gem/ruby ]; then
     done
 fi
 
-# Powerline install
-# if [ -f /usr/share/powerline/bindings/bash/powerline.sh ]; then
-#     source /usr/share/powerline/bindings/bash/powerline.sh
-# fi
+function _update_ps1() {
+  # export PS1="$(~/powerline-shell.py $? 2> /dev/null)"
+  export PS1="$(~/bin/powerline-shell.py $?)"
+}
+
+export PROMPT_COMMAND="_update_ps1; $PROMPT_COMMAND"
 
 # Adding composer binaries to PATH
 if [ -d ~/.composer/vendor/bin/ ]; then
@@ -18,7 +20,6 @@ if [ -d ~/.composer/vendor/bin/ ]; then
 fi
 
 export EDITOR='/opt/sublime_text/sublime_text'
-alias subl="/opt/sublime_text/sublime_text"
 
 export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
 

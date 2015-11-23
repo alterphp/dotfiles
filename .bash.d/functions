@@ -54,6 +54,10 @@ command_not_found_handle() {
    -v /etc/passwd:/etc/passwd:ro \
    -v /etc/group:/etc/group:ro \
    -v /etc/localtime:/etc/localtime:ro \
+   -v /home/$(whoami)/.ssh/known_hosts:/home/$(whoami)/.ssh/known_hosts \
+   -v "$SSH_AUTH_SOCK":/ssh-agent \
+   -e SSH_AUTH_SOCK=/ssh-agent \
    -v $(pwd):/data \
+   --link=dockerhub_mysql_1 \
    "docker-tools/$1" "$@"
 }
