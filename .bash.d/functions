@@ -7,21 +7,21 @@ function reload {
 command_not_found_handle() {
 
   # if [[ $(prompt_session_type) == "remote/docker" ]]; then
-    # echo "$0: $1: command not found"
+    # echo "$0: docker-tools/$1: command not found"
     # return
   # fi
 
-  # echo docker inspect --format '{{ .Author }}' "$1"
-  # docker inspect --format '{{ .Author }}' "$1"
+  # echo docker inspect --format '{{ .Author }}' "docker-tools/$1"
+  # docker inspect --format '{{ .Author }}' "docker-tools/$1"
   # Check if there is a container image with that name
-  if ! docker inspect --format '{{ .Author }}' "$1" >&/dev/null; then
-    echo "$0: $1: command not found"
+  if ! docker inspect --format '{{ .Author }}' "docker-tools/$1" >&/dev/null; then
+    echo "$0: docker-tools/$1: command not found"
     return
   fi
 
   # Check that it's really the name of the image, not a prefix
-  if docker inspect --format '{{ .Id }}' "$1" | grep -q "^$1" ;then
-    echo "$0: $1: command not found"
+  if docker inspect --format '{{ .Id }}' "docker-tools/$1" | grep -q "^docker-tools/$1" ;then
+    echo "$0: docker-tools/$1: command not found"
     return
   fi
 
@@ -49,16 +49,11 @@ command_not_found_handle() {
   tty -s && DASHT=-t
 
   docker run $DASHT -i -u $(whoami) \
-   $(env | cut -d= -f1 | awk '{print "-e", $1}') \
+   $(env | cut -d= -f1 | awk '{print "-e", docker-tools/$1}') \
    $DOCKERFILES_RUN_FLAGS $DEVICES $VOLUMES \
    -v /etc/passwd:/etc/passwd:ro \
    -v /etc/group:/etc/group:ro \
    -v /etc/localtime:/etc/localtime:ro \
    -v $(pwd):/data \
-   "$1" "$@"
+   "docker-tools/$1" "$@"
 }
-
-#
-## vim:foldmethod=marker:foldlevel=0
-#
-#
