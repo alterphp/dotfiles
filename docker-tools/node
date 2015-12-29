@@ -1,0 +1,3 @@
+#!/bin/bash
+source /home/pece/.bash.d/functions
+run_docker_tool node $@
