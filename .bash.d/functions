@@ -46,10 +46,10 @@ function run_docker_tool {
 
 command_not_found_handle() {
 
-  # if [[ $(prompt_session_type) == "remote/docker" ]]; then
-    # echo "$0: docker-tools/$1: command not found"
-    # return
-  # fi
+  if [[ $(prompt_session_type) == "remote/docker" ]]; then
+    echo "$0: docker-tools/$1: command not found"
+    return
+  fi
 
   # echo docker inspect --format '{{ .Author }}' "docker-tools/$1"
   # docker inspect --format '{{ .Author }}' "docker-tools/$1"
