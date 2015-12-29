@@ -65,5 +65,5 @@ command_not_found_handle() {
     return
   fi
 
-  run_docker_tool $1;
+  run_docker_tool $@;
 }
