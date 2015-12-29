@@ -18,6 +18,8 @@ alias dcsf='docker-compose run --rm php php app/console'
 alias dccap='docker-compose run --rm application bundle exec cap'
 alias dcgulp='docker-compose run --rm application node_modules/.bin/gulp'
 
+alias cap='bundle exec cap'
+
 # Re-init BDD avec fixtures
 alias sf_dbreset='sf do:da:dr --force && sf do:da:cr && sf do:sc:cr && sf al:fi:lo -n'
 # CS Fixer LePhare

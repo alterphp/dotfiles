@@ -4,26 +4,7 @@ function reload {
     source ~/.bashrc
 }
 
-command_not_found_handle() {
-
-  # if [[ $(prompt_session_type) == "remote/docker" ]]; then
-    # echo "$0: docker-tools/$1: command not found"
-    # return
-  # fi
-
-  # echo docker inspect --format '{{ .Author }}' "docker-tools/$1"
-  # docker inspect --format '{{ .Author }}' "docker-tools/$1"
-  # Check if there is a container image with that name
-  if ! docker inspect --format '{{ .Author }}' "docker-tools/$1" >&/dev/null; then
-    echo "$0: docker-tools/$1: command not found"
-    return
-  fi
-
-  # Check that it's really the name of the image, not a prefix
-  if docker inspect --format '{{ .Id }}' "docker-tools/$1" | grep -q "^docker-tools/$1" ;then
-    echo "$0: docker-tools/$1: command not found"
-    return
-  fi
+function run_docker_tool {
 
   # Add a bunch of (optional) devices
   # (Don't add them unconditionally: if they don't exist, it
@@ -60,4 +41,28 @@ command_not_found_handle() {
    -v $(pwd):/data \
    --link=dockerhub_mysql_1 \
    "docker-tools/$1" "$@"
+}
+
+command_not_found_handle() {
+
+  # if [[ $(prompt_session_type) == "remote/docker" ]]; then
+    # echo "$0: docker-tools/$1: command not found"
+    # return
+  # fi
+
+  # echo docker inspect --format '{{ .Author }}' "docker-tools/$1"
+  # docker inspect --format '{{ .Author }}' "docker-tools/$1"
+  # Check if there is a container image with that name
+  if ! docker inspect --format '{{ .Author }}' "docker-tools/$1" >&/dev/null; then
+    echo "$0: docker-tools/$1: command not found"
+    return
+  fi
+
+  # Check that it's really the name of the image, not a prefix
+  if docker inspect --format '{{ .Id }}' "docker-tools/$1" | grep -q "^docker-tools/$1" ;then
+    echo "$0: docker-tools/$1: command not found"
+    return
+  fi
+
+  run_docker_tool $1;
 }

@@ -20,3 +20,4 @@
   ui = true
 [core]
   editor = vi
+  excludesfile = /home/pece/.gitignore_global
