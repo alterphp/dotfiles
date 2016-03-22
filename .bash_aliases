@@ -15,8 +15,7 @@ alias dc='docker-compose'
 alias dcup='docker-compose up -d'
 alias dcrun='docker-compose run --rm'
 alias dcsf='docker-compose run --rm php php app/console'
-alias dccap='docker-compose run --rm application bundle exec cap'
-alias dcgulp='docker-compose run --rm application node_modules/.bin/gulp'
+# alias dccap='docker-compose run --rm application bundle exec cap'
 
 alias cap='bundle exec cap'
 
