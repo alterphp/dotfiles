@@ -29,7 +29,7 @@ function run_docker_tool {
   DASHT=
   tty -s && DASHT=-t
 
-  docker run $DASHT -i -u $(whoami) \
+    docker run $DASHT -i -u $(id -u $(whoami)) \
    $(env | cut -d= -f1 | awk '{print "-e", docker-tools/$1}') \
    $DOCKERFILES_RUN_FLAGS $DEVICES $VOLUMES \
    -v /etc/passwd:/etc/passwd:ro \
