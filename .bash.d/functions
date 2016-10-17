@@ -35,7 +35,7 @@ function run_docker_tool {
    -v /etc/passwd:/etc/passwd:ro \
    -v /etc/group:/etc/group:ro \
    -v /etc/localtime:/etc/localtime:ro \
-   -v /home/$(whoami)/.ssh/known_hosts:/home/$(whoami)/.ssh/known_hosts \
+   -v /home/$(whoami):/home/$(whoami) \
    -v "$SSH_AUTH_SOCK":/ssh-agent \
    -e SSH_AUTH_SOCK=/ssh-agent \
    -v /tmp:/tmp \
