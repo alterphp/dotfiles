@@ -23,5 +23,6 @@ alias cap='bundle exec cap'
 alias sf_dbreset='sf do:da:dr --force && sf do:da:cr && sf do:sc:cr && sf al:fi:lo -n'
 # CS Fixer LePhare
 alias csfix='bin/php-cs-fixer fix -v --level=symfony --fixers=-phpdoc_param'
+alias dcsfix='dcrun php bin/php-cs-fixer fix -v --level=symfony --fixers=-phpdoc_param'
 # PHP Lint recursif !
 alias lint='find src -depth -iname "*.php" -exec php -l {} \; | grep -v "No syntax errors detected"'
