@@ -26,3 +26,5 @@ alias csfix='bin/php-cs-fixer fix -v --level=symfony --fixers=-phpdoc_param'
 alias dcsfix='dcrun php bin/php-cs-fixer fix -v --level=symfony --fixers=-phpdoc_param'
 # PHP Lint recursif !
 alias lint='find src -depth -iname "*.php" -exec php -l {} \; | grep -v "No syntax errors detected"'
+
+alias glog='git log --date=short --all --graph --format="%d %C(auto) %h %Cred %cd %Cblue %an %Cgreen %s"'
