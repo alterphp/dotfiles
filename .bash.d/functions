@@ -29,18 +29,17 @@ function run_docker_tool {
   DASHT=
   tty -s && DASHT=-t
 
-  docker run $DASHT -i -u $(whoami) \
+    docker run $DASHT -i -u $(id -u $(whoami)) \
    $(env | cut -d= -f1 | awk '{print "-e", docker-tools/$1}') \
    $DOCKERFILES_RUN_FLAGS $DEVICES $VOLUMES \
    -v /etc/passwd:/etc/passwd:ro \
    -v /etc/group:/etc/group:ro \
    -v /etc/localtime:/etc/localtime:ro \
-   -v /home/$(whoami)/.ssh/known_hosts:/home/$(whoami)/.ssh/known_hosts \
+   -v /home/$(whoami):/home/$(whoami) \
    -v "$SSH_AUTH_SOCK":/ssh-agent \
    -e SSH_AUTH_SOCK=/ssh-agent \
    -v /tmp:/tmp \
    -v $(pwd):/data \
-   --link=dockerhub_mysql_1 \
    "docker-tools/$1" "$@"
 }
 
