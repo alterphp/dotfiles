@@ -4,7 +4,10 @@
 [github]
   user = alterphp
   token = efc3d4ed347b070d6797301bca872433
-
+[core]
+  editor = vi
+  whitespace = trailing-space,space-before-tab
+  excludesfile = /home/pece/.gitignore_global
 [alias]
   br = branch
   cm = commit
@@ -12,12 +15,18 @@
   d = diff
   st = status
   plr = pull --rebase
-
+  up = pull --rebase --autostash
+[pull]
+  default = current
 [push]
   default = current
-
 [color]
   ui = true
-[core]
-  editor = vi
-  excludesfile = /home/pece/.gitignore_global
+[color "status"]
+  added = green
+  changed = yellow
+  untracked = red
+[mergetool]
+  keepBackup = false
+  keepTemporaries = false
+  prompt = false
