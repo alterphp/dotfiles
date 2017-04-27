@@ -30,3 +30,5 @@
   keepBackup = false
   keepTemporaries = false
   prompt = false
+[branch]
+  autosetuprebase = always
