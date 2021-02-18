@@ -16,6 +16,7 @@
   st = status
   plr = pull --rebase
   up = pull --rebase --autostash
+  fap = fetch --all --prune
 [pull]
   default = current
 [push]
