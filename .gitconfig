@@ -10,7 +10,7 @@
   excludesfile = /home/pece/.gitignore_global
 [alias]
   br = branch
-  cm = commit
+  cm = commit -m
   co = checkout
   d = diff
   st = status
